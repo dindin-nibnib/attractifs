@@ -1,0 +1,36 @@
+@font-face {
+	font-family: "The nautigal";
+	src: url("/assets/fonts/TheNautigal-Regular.ttf");
+}
+
+* {
+	--color-accent: #fd3356;
+	--color-back: #23262a;
+	font-family: Bahnschrift, Arial, sans-serif;
+	color: white;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #841b2d;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+main, header, footer {
+	background-color: #23262abb;
+	padding: 20px;
+	width: 500px;
+	align-self: center;
+}
+
+h1.titre-principal {
+	font-family: "The nautigal", cursive;
+	font-size: 48px;
+	margin: 0;
+}
