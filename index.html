@@ -11,18 +11,89 @@
 
 	<link href="https://raw.githubusercontent.com/csstools/normalize.css/main/normalize.css" rel="stylesheet">
 	<link href="./css/main.css" rel="stylesheet">
+	<script src="./main.js"></script>
 </head>
 <body>
 <header>
-	<!--todo: ajouter image dans barre titre-->
-	<img alt="" src="">
-	<h1 class="titre-principal">Coiffure Attrac'tifs</h1>
-	<div class="menus"></div>
+	<h1>Coiffure Attrac'tifs</h1>
+	<div class="menus">
+		<a href="https://bit.ly/3sQRw3d">Localisation</a>
+	</div>
 </header>
 
 
 <main>
+	<h1>
+		Bienvenue!
+	</h1>
 
+	<div class="enfant">
+		<button class="enfant derouler" onclick="showMenu(this)">
+			ENFANT
+			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+		</button>
+		<div class="container-derouler">
+			<div onclick="selectOption(this)">
+				<div>
+					<label for="5-ans-courts">
+					Coupe jusqu'à 5 ans sur cheveux courts
+				</label>
+
+					<input class="checkbox" type="checkbox" id="5-ans-courts" name="5-ans-courts" value="5court">
+				</div>
+
+				<div class="meta">
+					<p class="meta">30 min</p>
+					<p class="meta">14.00 CHF</p>
+				</div>
+			</div>
+
+			<div onclick="selectOption(this)">
+				<div>
+					<label for="5-ans-courts2">
+					Coupe jusqu'à 5 ans sur cheveux courts
+				</label>
+
+					<input class="checkbox" type="checkbox" id="5-ans-courts2" name="5-ans-courts" value="5court">
+				</div>
+
+				<div class="meta">
+					<p class="meta">30 min</p>
+					<p class="meta">14.00 CHF</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="femme">
+		<button class="femme derouler" onclick="showMenu(this)">
+			FEMININ
+			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+		</button>
+		<div class="container-derouler">
+
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="homme">
+		<button class="homme derouler" onclick="showMenu(this)">
+			MASCULIN
+			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+		</button>
+		<div class="container-derouler">
+
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="checkout-prompt">
+		<a href="./checkout.html" onclick="checkout()">go</a>
+	</div>
 </main>
 
 
