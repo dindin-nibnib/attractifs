@@ -195,3 +195,7 @@ div.meta {
 	display: flex;
 	justify-content: space-between;
 }
+
+.copyright {
+	margin: 10px 0;
+}
