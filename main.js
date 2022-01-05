@@ -25,9 +25,11 @@ function selectOption(myself) {
     if (document.querySelector('img[src="assets/images/icons/checkbox-full.png"]')) {
         document.querySelector('.checkout-prompt').style.top = "calc(100vh - 75px)"
         document.querySelector('.checkout-prompt').style.bottom = "5px"
+        document.querySelector("footer").style.paddingBottom = "100px"
     } else {
         document.querySelector('.checkout-prompt').style.top = "calc(100vh + 5px)"
         document.querySelector('.checkout-prompt').style.bottom = "-75px"
+        document.querySelector("footer").style.paddingBottom = ""
     }
 }
 
