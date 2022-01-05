@@ -14,10 +14,10 @@ function selectOption(myself) {
         myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-mt.png"
         myself.style.border = "2px solid darkgrey"
         myself.style.boxShadow = ""
-        document.cookie = myself.id + "=false"
+        document.cookie = myself.id + "=false, SameSite=Lax"
     } else {
         myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-full.png"
-        document.cookie = myself.id + "=true"
+        document.cookie = myself.id + "=true, SameSite=Lax"
         myself.style.border = "4px solid var(--color-accent)"
         myself.style.boxShadow = "0 0 10px black"
     }
