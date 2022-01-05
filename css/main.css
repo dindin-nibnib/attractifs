@@ -102,14 +102,14 @@ button > img {
 	width: 36px;
 }
 
-div.container-derouler {
+div.container-dérouler {
 	display: none;
 	grid-template-columns: auto auto auto;
 	column-gap: 10px;
 	row-gap: 10px;
 }
 
-div.container-derouler > div {
+div.container-dérouler > div {
 	border: 2px solid darkgrey;
 	background-color: #23262abb;
 	border-radius: 10px;
@@ -117,18 +117,18 @@ div.container-derouler > div {
 	cursor: pointer;
 }
 
-div.container-derouler > div > div > h2 {
+div.container-dérouler > div > div > h2 {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 0;
 }
 
-div.container-derouler > div > div > input {
+div.container-dérouler > div > div > input {
 	height: 25px;
 	width: 25px;
 }
 
-div.container-derouler > div > div {
+div.container-dérouler > div > div {
 	display: flex;
 	justify-content: space-between;
 	margin: 17px 0 0 0;
