@@ -1,5 +1,5 @@
-function showMenu (myself) {
-    if(myself.parentElement.lastElementChild.style.display === 'grid') {
+function showMenu(myself) {
+    if (myself.parentElement.lastElementChild.style.display === 'grid') {
         myself.parentElement.lastElementChild.style.display = 'none'
         myself.lastElementChild.style.transform = "rotate(0)"
     } else {
@@ -9,7 +9,7 @@ function showMenu (myself) {
 
 }
 
-function selectOption (myself) {
+function selectOption(myself) {
     if (myself.firstElementChild.lastElementChild.getAttribute('src') === "assets/images/icons/checkbox-full.png") {
         myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-mt.png"
         myself.style.border = "2px solid darkgrey"
@@ -22,7 +22,7 @@ function selectOption (myself) {
         myself.style.boxShadow = "0 0 10px black"
     }
 
-    if(document.querySelector('img[src="assets/images/icons/checkbox-full.png"]')) {
+    if (document.querySelector('img[src="assets/images/icons/checkbox-full.png"]')) {
         document.querySelector('.checkout-prompt').style.top = "calc(100vh - 75px)"
         document.querySelector('.checkout-prompt').style.bottom = "5px"
     } else {
@@ -35,7 +35,7 @@ function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
+    for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
         while (c.charAt(0) === ' ') {
             c = c.substring(1);
