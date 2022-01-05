@@ -26,7 +26,7 @@ li > a {
 	color: #fd3356;
 }
 
-a {
+:not(#copyright > p) > a {
 	cursor: pointer;
 	font-size: 25px;
 }
@@ -51,6 +51,7 @@ html {
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
+	min-height: 100vh;
 }
 
 body {
@@ -58,7 +59,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 header {
@@ -188,4 +189,9 @@ div.meta {
 
 .checkout-prompt > a:hover {
 	box-shadow: 0 0 20px black;
+}
+
+#contact {
+	display: flex;
+	justify-content: space-between;
 }
