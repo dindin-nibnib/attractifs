@@ -1,5 +1,3 @@
-document.cookie = ""
-
 function showMenu (myself) {
     if(myself.parentElement.lastElementChild.style.display === 'grid') {
         myself.parentElement.lastElementChild.style.display = 'none'
@@ -12,15 +10,19 @@ function showMenu (myself) {
 }
 
 function selectOption (myself) {
-    myself.firstElementChild.lastElementChild.checked = !myself.firstElementChild.lastElementChild.checked;
-    document.cookie = myself.firstElementChild.lastElementChild.value + "=" + myself.firstElementChild.lastElementChild.checked;
-    for (const checkbox of document.getElementsByClassName('checkbox')) {
-        if(checkbox.checked) {
-            document.getElementsByClassName('checkout-prompt').item(0).style.display = "block"
-            break;
-        }
-        document.getElementsByClassName('checkout-prompt').item(0).style.display = "none"
+    if (myself.firstElementChild.lastElementChild.getAttribute('src') === "assets/images/icons/checkbox-full.png") {
+        myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-mt.png"
+        myself.style.border = "2px solid darkgrey"
+        myself.style.boxShadow = ""
+        document.cookie = myself.id + "=false"
+    } else {
+        myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-full.png"
+        document.cookie = myself.id + "=true"
+        myself.style.border = "4px solid var(--color-accent)"
+        myself.style.boxShadow = "0 0 10px black"
     }
+
+    document.querySelector('.checkout-prompt').hidden = !document.querySelector('img[src="assets/images/icons/checkbox-full.png"]');
 }
 
 function getCookie(cname) {

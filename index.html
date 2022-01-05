@@ -30,16 +30,16 @@
 	<div class="enfant">
 		<button class="enfant derouler" onclick="showMenu(this)">
 			ENFANT
-			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+			<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
 		</button>
 		<div class="container-derouler">
-			<div onclick="selectOption(this)">
+			<div onclick="selectOption(this)" id="5-ans-courts">
 				<div>
-					<label for="5-ans-courts">
-					Coupe jusqu'à 5 ans sur cheveux courts
-				</label>
-
-					<input class="checkbox" type="checkbox" id="5-ans-courts" name="5-ans-courts" disabled=true value="5court">
+					<h2>
+						Coupe jusqu'à 5 ans sur cheveux courts
+					</h2>
+					<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option" style="width:30px;
+					                                                                                   height:30px">
 				</div>
 
 				<div class="meta">
@@ -48,13 +48,13 @@
 				</div>
 			</div>
 
-			<div onclick="selectOption(this)">
+			<div onclick="selectOption(this)" id="5-ans-longs">
 				<div>
-					<label for="5-ans-courts2">
-					Coupe jusqu'à 5 ans sur cheveux courts
-				</label>
-
-					<input class="checkbox" type="checkbox" id="5-ans-courts2" name="5-ans-courts" value="5court">
+					<h2>
+						Coupe jusqu'à 5 ans sur cheveux longs
+					</h2>
+					<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option" style="width:30px;
+					                                                                                   height:30px">
 				</div>
 
 				<div class="meta">
@@ -70,7 +70,7 @@
 	<div class="femme">
 		<button class="femme derouler" onclick="showMenu(this)">
 			FEMININ
-			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+			<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
 		</button>
 		<div class="container-derouler">
 
@@ -82,7 +82,7 @@
 	<div class="homme">
 		<button class="homme derouler" onclick="showMenu(this)">
 			MASCULIN
-			<img src="assets/images/icones/arrow.png" alt="Dérouler le menu">
+			<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
 		</button>
 		<div class="container-derouler">
 
@@ -91,7 +91,7 @@
 
 	<hr>
 
-	<div class="checkout-prompt">
+	<div class="checkout-prompt" hidden>
 		<a href="./checkout.html">go</a>
 	</div>
 </main>
