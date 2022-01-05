@@ -9,6 +9,7 @@
 	font-family: Bahnschrift, Whitney, "Helvetica Neue", Arial, sans-serif;
 	color: white;
 	box-sizing: border-box;
+	cursor: inherit;
 }
 
 h1 {
