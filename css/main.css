@@ -196,6 +196,10 @@ div.meta {
 	justify-content: space-between;
 }
 
-.copyright {
+#copyright {
 	margin: 10px 0;
+}
+
+#copyright > p {
+	text-align: center;
 }
