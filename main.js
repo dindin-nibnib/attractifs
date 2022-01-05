@@ -22,7 +22,13 @@ function selectOption (myself) {
         myself.style.boxShadow = "0 0 10px black"
     }
 
-    document.querySelector('.checkout-prompt').hidden = !document.querySelector('img[src="assets/images/icons/checkbox-full.png"]');
+    if(document.querySelector('img[src="assets/images/icons/checkbox-full.png"]')) {
+        document.querySelector('.checkout-prompt').style.top = "calc(100vh - 75px)"
+        document.querySelector('.checkout-prompt').style.bottom = "5px"
+    } else {
+        document.querySelector('.checkout-prompt').style.top = "calc(100vh + 5px)"
+        document.querySelector('.checkout-prompt').style.bottom = "-75px"
+    }
 }
 
 function getCookie(cname) {
