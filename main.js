@@ -25,8 +25,8 @@ function showMenu(myself) {
 function selectOption(myself) {
     if (myself.firstElementChild.lastElementChild.getAttribute('src') === "assets/images/icons/checkbox-full.png") {
         myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-mt.png"
-        myself.style.border = "2px solid darkgrey"
-        myself.style.boxShadow = ""
+        myself.style.border = null
+        myself.style.boxShadow = null
         document.cookie = myself.id + "=false, SameSite=Lax"
     } else {
         myself.firstElementChild.lastElementChild.src = "assets/images/icons/checkbox-full.png"
