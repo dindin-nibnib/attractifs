@@ -72,7 +72,7 @@ header {
 main, header, footer {
 	background-color: #23262abb;
 	padding: 20px 60px;
-	width: 800px;
+	width: 1000px;
 	align-self: center;
 }
 
@@ -214,4 +214,5 @@ div.meta {
 img[src="assets/images/icons/checkbox-mt.png"], img[src="assets/images/icons/checkbox-full.png"] {
 	width: 30px;
 	height: 30px;
+	margin: 5px;
 }
