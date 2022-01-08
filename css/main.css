@@ -123,17 +123,20 @@ button > img {
 
 div.container-dérouler {
 	display: none;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: calc(33.33% - 20px / 3) calc(33.33% - 20px / 3) calc(33.33% - 20px / 3);
 	column-gap: 10px;
 	row-gap: 10px;
 }
 
 div.container-dérouler > div {
+	display: flex;
 	border: 2px solid darkgrey;
 	background-color: #23262abb;
 	border-radius: 10px;
-	padding: 0 10px;
+	padding: 5px 10px 5px 15px;
 	cursor: pointer;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 div.container-dérouler > div > div > h2 {
@@ -150,18 +153,20 @@ div.container-dérouler > div > div > input {
 div.container-dérouler > div > div {
 	display: flex;
 	justify-content: space-between;
-	margin: 17px 0 0 0;
+	margin: 10px 0 0 0;
 	align-items: center;
 }
 
 p.meta {
 	color: var(--color-accent);
+	margin: 10px 0;
 }
 
-div.meta {
+div.container-dérouler > div > div.meta {
 	display: flex;
-	width: 75%;
+	max-width: 65%;
 	justify-content: space-between;
+	margin: 5px 0;
 }
 
 .checkout-prompt {
@@ -215,4 +220,5 @@ img[src="assets/images/icons/checkbox-mt.png"], img[src="assets/images/icons/che
 	width: 30px;
 	height: 30px;
 	margin: 5px;
+	align-self: start;
 }
