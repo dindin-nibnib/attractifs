@@ -210,3 +210,8 @@ div.meta {
 #copyright > p {
 	text-align: center;
 }
+
+img[src="assets/images/icons/checkbox-mt.png"], img[src="assets/images/icons/checkbox-full.png"] {
+	width: 30px;
+	height: 30px;
+}
