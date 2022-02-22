@@ -73,6 +73,16 @@ header {
 	flex-direction: column;
 }
 
+header a {
+	text-decoration: none;
+	color: white;
+}
+
+header a:hover {
+	color: var(--color-accent);
+	transform: scale(1.1);
+}
+
 main, header, footer {
 	background-color: #23262abb;
 	padding: 20px 60px;
