@@ -1,3 +1,4 @@
+"use strict";
 var dayOfWeek;
 (function (dayOfWeek) {
     dayOfWeek[dayOfWeek["LUNDI"] = 1] = "LUNDI";
@@ -210,21 +211,30 @@ function string2int(s) {
         nombre *= -1;
     return nombre;
 }
-function selectDay(day) {
-    let monthString = document.querySelector("#mois > span")?.innerHTML;
-    monthString = monthString?.split(" ")[0];
-    if (monthString === undefined)
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === " ") {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function displayHours() {
+    let heuresDiv = document.getElementById("heures");
+    if (!heuresDiv)
         return;
-    let month = numeroMois(monthString);
-    if (month === 0)
-        return;
-    let yearString = document.querySelector("#mois > span")?.innerHTML;
-    yearString = yearString?.split(" ")[1];
-    if (yearString === undefined)
-        return;
-    let year = string2int(monthString);
-    if (year === 0)
-        return;
+    heuresDiv.style.display = "";
+}
+function selectDay(event) {
+    displayHours();
+    return;
 }
 function fillCalendar(month = getCurrentDate().getMonth(), year = getCurrentDate().getFullYear()) {
     let calendar = document.querySelector("#jours-numeros");
@@ -253,7 +263,7 @@ function fillCalendar(month = getCurrentDate().getMonth(), year = getCurrentDate
     for (var i = 1; i <= maxJoursMois(month, year); i++) {
         var dayButton = document.createElement("a");
         dayButton.href = "#";
-        dayButton.setAttribute("onclick", "");
+        dayButton.setAttribute("onclick", "selectDay");
         var dayNumber = document.createElement("span");
         dayNumber.innerHTML = i;
         if (dayOfTheWeek(i, month, year) === dayOfWeek.DIMANCHE ||
@@ -309,6 +319,10 @@ function previousMonth() {
 }
 window.onload = () => {
     fillCalendar();
+    let heuresDiv = document.getElementById("heures");
+    if (!heuresDiv)
+        return;
+    heuresDiv.style.display = "none";
     let mois = document.querySelector("#mois > span");
     if (mois === null)
         return;

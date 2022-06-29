@@ -235,10 +235,13 @@ function getCookie(cname: string): string {
   return "";
 }
 
-function displayHours(): void {}
+function displayHours(): void {
+  let heuresDiv = document.getElementById("heures");
+  if (!heuresDiv) return;
+  heuresDiv.style.display = "";
+}
 
 function selectDay(event: Event): void {
-  var source = event.target || event.srcElement;
   displayHours();
   return;
 }
@@ -347,6 +350,10 @@ function previousMonth() {
 
 window.onload = () => {
   fillCalendar();
+
+  let heuresDiv = document.getElementById("heures");
+  if (!heuresDiv) return;
+  heuresDiv.style.display = "none";
 
   let mois = document.querySelector("#mois > span");
   if (mois === null) return;

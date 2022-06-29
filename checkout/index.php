@@ -13,9 +13,10 @@
 	<link href="../assets/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
 	<link href="../assets/favicon/site.webmanifest" rel="manifest">
 
-	<link rel="stylesheet" href="https://raw.githubusercontent.com/csstools/normalize.css/main/normalize.css">
+	<link rel="stylesheet" href="https://unpkg.com/@csstools/normalize.css">
 	<link rel="stylesheet" href="./css/main.css">
-	<script src="calendrier.js"></script>
+	<script src="https://raw.githubusercontent.com/mysqljs/mysql/master/index.js" type="text/js"></script>
+	<script src="./calendrier.js"></script>
 </head>
 
 <body>
@@ -27,7 +28,9 @@
 	</header>
 
 	<main>
-		<h2>Choisissez une date: </h2>
+		<h2>
+			Choisissez votre tranche horaire: 
+		</h2>
 		<div id="calendrier">
 			<div id="mois">
 				<a href="#" onclick="previousMonth()">
@@ -49,9 +52,12 @@
 					<span>dim.</span>
 				</div>
 				<div id="jours-numeros">
-
 				</div>
 			</div>
+		</div>
+
+		<div id="heures">
+		peen
 		</div>
 	</main>
 

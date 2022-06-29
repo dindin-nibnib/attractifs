@@ -39,11 +39,11 @@
 		<h2>Faites votre choix:</h2>
 
 		<div class="enfant">
-			<button class="enfant dérouler" onclick="showMenu(this)">
+			<button class="enfant derouler" onclick="showMenu(this)">
 				ENFANT
-				<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
+				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
 			</button>
-			<div class="container-dérouler">
+			<div class="container-derouler">
 				<div onclick="selectOption(this)" id="5-ans-courts">
 					<div>
 						<h2>
@@ -119,11 +119,11 @@
 		<hr>
 
 		<div class="femme">
-			<button class="femme dérouler" onclick="showMenu(this)">
+			<button class="femme derouler" onclick="showMenu(this)">
 				FEMME
-				<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
+				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
 			</button>
-			<div class="container-dérouler">
+			<div class="container-derouler">
 				<div onclick="selectOption(this)" id="f-simple-courts">
 					<div>
 						<h2>
@@ -465,11 +465,11 @@
 		<hr>
 
 		<div class="homme">
-			<button class="homme dérouler" onclick="showMenu(this)">
+			<button class="homme derouler" onclick="showMenu(this)">
 				HOMME
-				<img src="assets/images/icons/arrow.png" alt="Dérouler le menu">
+				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
 			</button>
-			<div class="container-dérouler">
+			<div class="container-derouler">
 				<div onclick="selectOption(this)" id="m-shampoing-coupe-séchage-courts">
 					<div>
 						<h2>
@@ -621,7 +621,7 @@
 
 		<div class="checkout-prompt" hidden>
 			<p>Vous avez terminéf ? Passez à la suite!</p>
-			<a href="./checkout.html">Suivant</a>
+			<a href="./checkout">Suivant</a>
 		</div>
 	</main>
 

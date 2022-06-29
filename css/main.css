@@ -135,14 +135,14 @@ button > img {
 	width: 36px;
 }
 
-div.container-dérouler {
+div.container-derouler {
 	display: none;
 	grid-template-columns: calc(33.33% - 20px / 3) calc(33.33% - 20px / 3) calc(33.33% - 20px / 3);
 	column-gap: 10px;
 	row-gap: 10px;
 }
 
-div.container-dérouler > div {
+div.container-derouler > div {
 	display: flex;
 	border: 2px solid darkgrey;
 	background-color: #23262abb;
@@ -153,18 +153,18 @@ div.container-dérouler > div {
 	justify-content: space-between;
 }
 
-div.container-dérouler > div > div > h2 {
+div.container-derouler > div > div > h2 {
 	font-size: 20px;
 	font-weight: bold;
 	margin: 0;
 }
 
-div.container-dérouler > div > div > input {
+div.container-derouler > div > div > input {
 	height: 25px;
 	width: 25px;
 }
 
-div.container-dérouler > div > div {
+div.container-derouler > div > div {
 	display: flex;
 	justify-content: space-between;
 	margin: 10px 0 0 0;
@@ -176,7 +176,7 @@ p.meta {
 	margin: 10px 0;
 }
 
-div.container-dérouler > div > div.meta {
+div.container-derouler > div > div.meta {
 	display: flex;
 	max-width: 65%;
 	justify-content: space-between;
@@ -207,6 +207,7 @@ div.container-dérouler > div > div.meta {
 	border-color: var(--color-accent);
 	border-width: inherit;
 	border-style: inherit;
+	color: white;
 	padding: 7px 10px;
 	margin: 5px;
 	font-size: 18px;
