@@ -60,11 +60,31 @@
 			</div>
 		</div>
 
-		<div id="heures">
+		<form id="heures">
 			<?php
-			echo $_POST["jour"];
-			echo $_POST["mois"];
-			?></div>
+			$servername = "127.0.0.1";
+			$username = "root";
+
+			$day = $_POST["jour"];
+			$month = $_POST["mois"];
+			$year = $_POST["annee"];
+
+			$conn = new mysqli();
+			$conn->connect($servername, $username, null, "attractifs", 3306);
+			// Check connection
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+
+			$sql = "SELECT heure FROM horaire where date = '$year-$month-$day';";
+			$result = $conn->query($sql);
+
+			while ($row = $result->fetch_assoc()) {
+				echo $row["heure"] . "<br>";
+			}
+
+			$conn->close();
+			?></from>
 
 	</main>
 
