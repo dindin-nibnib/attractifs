@@ -253,7 +253,6 @@ function fillCalendar(month = getCurrentDate().getMonth() + 1, year = getCurrent
         month = 1;
         year++;
     }
-    console.log(day, " ", month, " ", year);
     for (var i = 1; i <= maxJoursMois(month, year); i++) {
         var dayButton = document.createElement("button");
         var dayNumber = document.createElement("span");
@@ -361,7 +360,7 @@ function previousMonth() {
     // @ts-ignore: Property 'value' does not exist on type 'Element'.
     yearInput.value = `${nextYearNumber}`;
 }
-window.onload = () => {
+window.onload = async () => {
     if (document.querySelector("#mois > span")?.innerHTML !== "" &&
         document.querySelector("#mois > span")?.innerHTML !== undefined) {
         let innerHTML = document
@@ -387,5 +386,40 @@ window.onload = () => {
             nomMois(getCurrentDate().getMonth() + 1) +
                 " " +
                 getCurrentDate().getFullYear();
+    }
+    let heuresElement = document.querySelector("#heures");
+    if (!heuresElement)
+        return;
+    var heures = (await (await fetch("./heures.json")).json())
+        .heures;
+    if (heuresElement.innerHTML
+        .split(" ")
+        .join("")
+        .split("\n")
+        .join("")
+        .split("\t")
+        .join("") === "") {
+        heuresElement.style.display = "";
+        for (let i = 0; i < heures.length; i++) {
+            let button = document.createElement("button");
+            button.name = "hour";
+            button.value = `${heures[i]}`;
+            button.innerHTML = `${heures[i]}`;
+            heuresElement.appendChild(button);
+        }
+    }
+    else if (heuresElement.innerHTML
+        .split(" ")
+        .join("")
+        .split("\n")
+        .join("")
+        .split("\t")
+        .join("") !== " ") {
+        let heuresPrises = heuresElement.innerHTML
+            .split(" ")
+            .join("")
+            .split("\t")
+            .join("")
+            .split("\n");
     }
 };

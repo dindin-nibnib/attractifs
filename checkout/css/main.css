@@ -251,6 +251,31 @@ noscript > img {
 	border: 2px solid var(--color-accent);
 	padding: 10px;
 	background-color: var(--color-back);
+	margin-bottom: 20px;
+}
+
+#heures {
+	width: 75%;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	border-radius: 10px;
+	border: 2px solid var(--color-accent);
+	padding: 10px;
+	background-color: var(--color-back);
+	margin-bottom: 20px;
+	row-gap: 20px;
+	column-gap: 10px;
+}
+
+#heures > button {
+	width: 75%;
+	border-radius: 20px;
+	border: 2px solid var(--color-back);
+	background-color: var(--color-accent);
+	color: white;
+	cursor: pointer;
+	padding: 5px;
+	font-size: 20px;
 }
 
 #mois {

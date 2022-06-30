@@ -60,31 +60,45 @@
 			</div>
 		</div>
 
-		<form id="heures">
-			<?php
-			$servername = "127.0.0.1";
-			$username = "root";
+		<?php
+		$day = $_POST["jour"];
+		$month = $_POST["mois"];
+		$year = $_POST["annee"];
 
-			$day = $_POST["jour"];
-			$month = $_POST["mois"];
-			$year = $_POST["annee"];
+		echo '<input type="text" style="display: none;" form="heures" name="jour" value="' . $day . '">';
+		echo '<input type="text" style="display: none;" form="heures" name="mois" value="' . $month . '">';
+		echo '<input type="text" style="display: none;" form="heures" name="annee" value="' . $year . '">';
+		?>
 
-			$conn = new mysqli();
-			$conn->connect($servername, $username, null, "attractifs", 3306);
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
+		<form id="heures" action="../client/index.php" method="post" style="display: none;"><?php
+																							$servername = "127.0.0.1";
+																							$username = "root";
 
-			$sql = "SELECT heure FROM horaire where date = '$year-$month-$day';";
-			$result = $conn->query($sql);
+																							$day = $_POST["jour"];
+																							$month = $_POST["mois"];
+																							$year = $_POST["annee"];
 
-			while ($row = $result->fetch_assoc()) {
-				echo $row["heure"] . "<br>";
-			}
+																							if ($day == "" && $month == "" && $year == "") {
+																								echo " ";
+																							}
 
-			$conn->close();
-			?></from>
+																							$conn = new mysqli();
+																							$conn->connect($servername, $username, null, "attractifs", 3306);
+
+																							// Check connection
+																							if ($conn->connect_error) {
+																								die("Connection failed: " . $conn->connect_error);
+																							}
+
+																							$sql = "SELECT heure FROM horaire where date = '$year-$month-$day' and fk_rdv is not null;";
+																							$result = $conn->query($sql);
+
+																							while ($row = $result->fetch_assoc()) {
+																								echo $row["heure"] . "<br>";
+																							}
+
+																							$conn->close();
+																							?></from>
 
 	</main>
 
