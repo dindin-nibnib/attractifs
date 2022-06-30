@@ -29,18 +29,20 @@
 
 	<main>
 		<h2>
-			Choisissez votre tranche horaire: 
+			Choisissez votre tranche horaire:
 		</h2>
 		<div id="calendrier">
-			<div id="mois">
+			<form id="mois">
 				<a href="#" onclick="previousMonth()">
 					<img id="mois-arriere" src="../assets/images/icons/arrow.png" alt="Mois précédent">
 				</a>
-				<span>## mois</span>
+				<span><?php if ($_POST["mois"] != "") {
+							echo $_POST["mois"], " ", $_POST["annee"];
+						} ?></span>
 				<a href="#" onclick="nextMonth()">
 					<img id="mois-avant" src="../assets/images/icons/arrow.png" alt="Mois suivant">
 				</a>
-			</div>
+			</form>
 			<div id="jours">
 				<div id="jours-labels">
 					<span>lun.</span>
@@ -51,14 +53,19 @@
 					<span>sam.</span>
 					<span>dim.</span>
 				</div>
-				<div id="jours-numeros">
-				</div>
+				<input type="text" style="display: none;" form="jours-numeros" name="mois">
+				<input type="text" style="display: none;" form="jours-numeros" name="annee">
+				<form id="jours-numeros" action="index.php" method="post">
+				</form>
 			</div>
 		</div>
 
 		<div id="heures">
-		peen
-		</div>
+			<?php
+			echo $_POST["jour"];
+			echo $_POST["mois"];
+			?></div>
+
 	</main>
 
 	<footer>

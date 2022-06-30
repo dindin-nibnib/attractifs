@@ -117,24 +117,6 @@ img[src="../../assets/images/icones/arrow.png"] {
 	transition: all 300ms;
 }
 
-button {
-	background: none;
-	border: none;
-	font-size: 36px;
-	cursor: pointer;
-	margin: 10px 0;
-	width: 100%;
-	text-align: left;
-}
-
-button:hover {
-	color: var(--color-accent);
-}
-
-button > img {
-	width: 36px;
-}
-
 div.container-derouler {
 	display: none;
 	grid-template-columns: calc(33.33% - 20px / 3) calc(33.33% - 20px / 3) calc(33.33% - 20px / 3);
@@ -281,26 +263,36 @@ noscript > img {
 }
 
 #jours-labels {
-	display: flex;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	margin-bottom: 10px;
 }
 
 #jours-labels > span {
 	text-align: center;
+	width: 100%;
 }
 
 #jours-numeros {
 	display: grid;
-	grid-template-columns: auto auto auto auto auto auto auto;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
 	row-gap: 5px;
 }
 
-#jours-numeros > a, span {
+form#jours-numeros > button, span {
 	color: white;
 	text-align: center;
 	text-decoration: none;
 	font-size: 25px;
-	display: inline
+	display: inline;
+	height: fit-content;
+}
+
+form#jours-numeros > button {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
 }
 
 #jours-numeros span.not-this-month {

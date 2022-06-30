@@ -235,27 +235,19 @@ function getCookie(cname: string): string {
   return "";
 }
 
-function displayHours(): void {
-  let heuresDiv = document.getElementById("heures");
-  if (!heuresDiv) return;
-  heuresDiv.style.display = "";
-}
-
-function selectDay(event: Event): void {
-  displayHours();
-  return;
-}
-
 function fillCalendar(): void;
 function fillCalendar(month: number, year: number): void;
 
 function fillCalendar(
-  month: number = getCurrentDate().getMonth(),
+  month: number = getCurrentDate().getMonth() + 1,
   year: number = getCurrentDate().getFullYear()
 ): void {
+  let day = getCurrentDate().getDate();
   let calendar = document.querySelector("#jours-numeros");
   if (calendar === null) return;
   calendar.innerHTML = "";
+
+  if (month === -1) return;
 
   month -= 1;
   if (month <= 0) {
@@ -284,18 +276,24 @@ function fillCalendar(
   }
 
   for (var i = 1; i <= maxJoursMois(month, year); i++) {
-    var dayButton = document.createElement("a");
-    dayButton.href = "#";
-    dayButton.setAttribute("onclick", "selectDay");
+    var dayButton = document.createElement("button");
     var dayNumber = document.createElement("span");
     dayNumber.innerHTML = i as unknown as string;
     if (
       dayOfTheWeek(i, month, year) === dayOfWeek.DIMANCHE ||
-      dayOfTheWeek(i, month, year) === dayOfWeek.LUNDI
+      dayOfTheWeek(i, month, year) === dayOfWeek.LUNDI ||
+      (i <= day &&
+        month === getCurrentDate().getMonth() + 1 &&
+        year === getCurrentDate().getFullYear()) ||
+      (month < getCurrentDate().getMonth() + 1 &&
+        year === getCurrentDate().getFullYear()) ||
+      year < getCurrentDate().getFullYear()
     ) {
       dayNumber.classList.add("unavailable");
       calendar.appendChild(dayNumber);
     } else {
+      dayButton.name = "jour";
+      dayButton.value = `${i}`;
       dayButton.appendChild(dayNumber);
       calendar.appendChild(dayButton);
     }
@@ -331,6 +329,39 @@ function nextMonth() {
   fillCalendar(nextMonthNumber, nextYearNumber);
 
   monthLabel.innerHTML = nomMois(nextMonthNumber) + " " + nextYearNumber;
+  let monthInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(2)"
+  );
+
+  if (!monthInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (monthInput.tagName !== "INPUT") {
+    console.error("Not an imput");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  monthInput.value = `${nextMonthNumber}`;
+
+  let yearInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(3)"
+  );
+
+  if (!yearInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (yearInput.tagName !== "INPUT") {
+    console.error("Not an input");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  yearInput.value = `${nextYearNumber}`;
 }
 
 function previousMonth() {
@@ -346,17 +377,67 @@ function previousMonth() {
   fillCalendar(nextMonthNumber, nextYearNumber);
 
   monthLabel.innerHTML = nomMois(nextMonthNumber) + " " + nextYearNumber;
+  let monthInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(2)"
+  );
+
+  if (!monthInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (monthInput.tagName !== "INPUT") {
+    console.error("Not an input");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  monthInput.value = `${nextMonthNumber}`;
+
+  let yearInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(3)"
+  );
+
+  if (!yearInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (yearInput.tagName !== "INPUT") {
+    console.error("Not an input");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  yearInput.value = `${nextYearNumber}`;
 }
 
 window.onload = () => {
-  fillCalendar();
+  if (
+    document.querySelector("#mois > span")?.innerHTML !== "" &&
+    document.querySelector("#mois > span")?.innerHTML !== undefined
+  ) {
+    let innerHTML = document
+      .querySelector("#mois > span")
+      ?.innerHTML.split(" ");
+    if (!innerHTML) return;
 
-  let heuresDiv = document.getElementById("heures");
-  if (!heuresDiv) return;
-  heuresDiv.style.display = "none";
+    fillCalendar(Number(innerHTML[0]), innerHTML[1] as unknown as number);
 
-  let mois = document.querySelector("#mois > span");
-  if (mois === null) return;
-  mois.innerHTML =
-    nomMois(getCurrentDate().getMonth()) + " " + getCurrentDate().getFullYear();
+    let monthLabel = document.querySelector("#mois > span");
+    if (!monthLabel) return;
+    monthLabel.innerHTML =
+      nomMois(Number(monthLabel.innerHTML.split(" ")[0])) +
+      " " +
+      monthLabel.innerHTML.split(" ")[1];
+  } else {
+    fillCalendar();
+
+    let mois = document.querySelector("#mois > span");
+    if (mois === null) return;
+    mois.innerHTML =
+      nomMois(getCurrentDate().getMonth() + 1) +
+      " " +
+      getCurrentDate().getFullYear();
+  }
 };

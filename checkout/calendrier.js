@@ -226,21 +226,14 @@ function getCookie(cname) {
     }
     return "";
 }
-function displayHours() {
-    let heuresDiv = document.getElementById("heures");
-    if (!heuresDiv)
-        return;
-    heuresDiv.style.display = "";
-}
-function selectDay(event) {
-    displayHours();
-    return;
-}
-function fillCalendar(month = getCurrentDate().getMonth(), year = getCurrentDate().getFullYear()) {
+function fillCalendar(month = getCurrentDate().getMonth() + 1, year = getCurrentDate().getFullYear()) {
+    let day = getCurrentDate().getDate();
     let calendar = document.querySelector("#jours-numeros");
     if (calendar === null)
         return;
     calendar.innerHTML = "";
+    if (month === -1)
+        return;
     month -= 1;
     if (month <= 0) {
         month = 12;
@@ -260,18 +253,25 @@ function fillCalendar(month = getCurrentDate().getMonth(), year = getCurrentDate
         month = 1;
         year++;
     }
+    console.log(day, " ", month, " ", year);
     for (var i = 1; i <= maxJoursMois(month, year); i++) {
-        var dayButton = document.createElement("a");
-        dayButton.href = "#";
-        dayButton.setAttribute("onclick", "selectDay");
+        var dayButton = document.createElement("button");
         var dayNumber = document.createElement("span");
         dayNumber.innerHTML = i;
         if (dayOfTheWeek(i, month, year) === dayOfWeek.DIMANCHE ||
-            dayOfTheWeek(i, month, year) === dayOfWeek.LUNDI) {
+            dayOfTheWeek(i, month, year) === dayOfWeek.LUNDI ||
+            (i <= day &&
+                month === getCurrentDate().getMonth() + 1 &&
+                year === getCurrentDate().getFullYear()) ||
+            (month < getCurrentDate().getMonth() + 1 &&
+                year === getCurrentDate().getFullYear()) ||
+            year < getCurrentDate().getFullYear()) {
             dayNumber.classList.add("unavailable");
             calendar.appendChild(dayNumber);
         }
         else {
+            dayButton.name = "jour";
+            dayButton.value = `${i}`;
             dayButton.appendChild(dayNumber);
             calendar.appendChild(dayButton);
         }
@@ -303,6 +303,28 @@ function nextMonth() {
     }
     fillCalendar(nextMonthNumber, nextYearNumber);
     monthLabel.innerHTML = nomMois(nextMonthNumber) + " " + nextYearNumber;
+    let monthInput = document.querySelector("#jours > input[type=text]:nth-child(2)");
+    if (!monthInput) {
+        console.error("undefined");
+        return;
+    }
+    if (monthInput.tagName !== "INPUT") {
+        console.error("Not an imput");
+        return;
+    }
+    // @ts-ignore: Property 'value' does not exist on type 'Element'.
+    monthInput.value = `${nextMonthNumber}`;
+    let yearInput = document.querySelector("#jours > input[type=text]:nth-child(3)");
+    if (!yearInput) {
+        console.error("undefined");
+        return;
+    }
+    if (yearInput.tagName !== "INPUT") {
+        console.error("Not an input");
+        return;
+    }
+    // @ts-ignore: Property 'value' does not exist on type 'Element'.
+    yearInput.value = `${nextYearNumber}`;
 }
 function previousMonth() {
     let monthLabel = document.querySelector("#mois > span");
@@ -316,16 +338,54 @@ function previousMonth() {
     }
     fillCalendar(nextMonthNumber, nextYearNumber);
     monthLabel.innerHTML = nomMois(nextMonthNumber) + " " + nextYearNumber;
+    let monthInput = document.querySelector("#jours > input[type=text]:nth-child(2)");
+    if (!monthInput) {
+        console.error("undefined");
+        return;
+    }
+    if (monthInput.tagName !== "INPUT") {
+        console.error("Not an input");
+        return;
+    }
+    // @ts-ignore: Property 'value' does not exist on type 'Element'.
+    monthInput.value = `${nextMonthNumber}`;
+    let yearInput = document.querySelector("#jours > input[type=text]:nth-child(3)");
+    if (!yearInput) {
+        console.error("undefined");
+        return;
+    }
+    if (yearInput.tagName !== "INPUT") {
+        console.error("Not an input");
+        return;
+    }
+    // @ts-ignore: Property 'value' does not exist on type 'Element'.
+    yearInput.value = `${nextYearNumber}`;
 }
 window.onload = () => {
-    fillCalendar();
-    let heuresDiv = document.getElementById("heures");
-    if (!heuresDiv)
-        return;
-    heuresDiv.style.display = "none";
-    let mois = document.querySelector("#mois > span");
-    if (mois === null)
-        return;
-    mois.innerHTML =
-        nomMois(getCurrentDate().getMonth()) + " " + getCurrentDate().getFullYear();
+    if (document.querySelector("#mois > span")?.innerHTML !== "" &&
+        document.querySelector("#mois > span")?.innerHTML !== undefined) {
+        let innerHTML = document
+            .querySelector("#mois > span")
+            ?.innerHTML.split(" ");
+        if (!innerHTML)
+            return;
+        fillCalendar(Number(innerHTML[0]), innerHTML[1]);
+        let monthLabel = document.querySelector("#mois > span");
+        if (!monthLabel)
+            return;
+        monthLabel.innerHTML =
+            nomMois(Number(monthLabel.innerHTML.split(" ")[0])) +
+                " " +
+                monthLabel.innerHTML.split(" ")[1];
+    }
+    else {
+        fillCalendar();
+        let mois = document.querySelector("#mois > span");
+        if (mois === null)
+            return;
+        mois.innerHTML =
+            nomMois(getCurrentDate().getMonth() + 1) +
+                " " +
+                getCurrentDate().getFullYear();
+    }
 };
