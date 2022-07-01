@@ -109,7 +109,7 @@
 			$stmt = prepared_query($conn, $sql, [$rdv_id, $result["id"]]);
 		}
 		$conn->close();
-		print "Merci de votre visite! Vous allez bientôt reçevoir un e-mail de confirmation.";
+		print "<h2>Merci de votre visite!</h2> <span>Vous allez bientôt reçevoir un e-mail de confirmation.<span>";
 		mail($email, "Reservation Coiffure attrac'tifs", "Bonjour.\nNous avons bien reçu votre demande de rendez-vous au salon de coiffure attractifs, le " . $day . "." . $month . "." . $year . ".\nNous nous réjouissons de vous retrouver!\n\nCeci est un message automatique. Il est inutile d'y répondre.", "From: Coiffure attractifs <odinbeuchat.ob@ikmail.com>");
 		?>
 	</main>
