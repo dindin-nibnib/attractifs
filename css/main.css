@@ -117,7 +117,7 @@ img[src="assets/images/icones/arrow.png"] {
 	transition: all 300ms;
 }
 
-button {
+button:not([form="coupe"]) {
 	background: none;
 	border: none;
 	font-size: 36px;
@@ -201,7 +201,7 @@ div.container-derouler > div > div.meta {
 	font-size: 20px;
 }
 
-.checkout-prompt > a {
+.checkout-prompt > button {
 	background-color: var(--color-accent);
 	border-radius: inherit;
 	border-color: var(--color-accent);
@@ -214,7 +214,7 @@ div.container-derouler > div > div.meta {
 	text-decoration: none;
 }
 
-.checkout-prompt > a:hover {
+.checkout-prompt > button:hover {
 	box-shadow: 0 0 20px black;
 }
 

@@ -10,7 +10,7 @@
 	<link href="./assets/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
 	<link href="./assets/favicon/site.webmanifest" rel="manifest">
 
-	<link href="https://raw.githubusercontent.com/csstools/normalize.css/main/normalize.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/@csstools/normalize.css">
 	<link href="./css/main.css" rel="stylesheet">
 	<script src="./main.js"></script>
 </head>
@@ -38,579 +38,584 @@
 
 		<h2>Faites votre choix:</h2>
 
-		<div class="enfant">
-			<button class="enfant derouler" onclick="showMenu(this)">
-				ENFANT
-				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
-			</button>
-			<div class="container-derouler">
-				<div onclick="selectOption(this)" id="5-ans-courts">
-					<div>
-						<h2>
-							Coupe jusqu'à 5 ans sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+		<form action="./checkout" method="post" id="coupe">
+			<input type="text" name="type" style="display:none" id="type">
+			<input type="text" name="temps" style="display:none" id="temps">
+			<div class="enfant">
+				<button type="button" class="enfant derouler" onclick="showMenu(this)" formnovalidate>
+					ENFANT
+					<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
+				</button>
+				<div class="container-derouler">
+					<div onclick="selectOption(this)" id="5-ans-courts">
+						<div>
+							<h2>
+								Coupe jusqu'à 5 ans sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">14.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">14.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="5-ans-longs">
+						<div>
+							<h2>
+								Coupe jusqu'à 5 ans sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="5-ans-longs">
-					<div>
-						<h2>
-							Coupe jusqu'à 5 ans sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">21.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="5-15-ans-courts">
-					<div>
-						<h2>
-							Coupe de 5 à 15 ans sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">21.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">22.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="5-15-ans-courts">
+						<div>
+							<h2>
+								Coupe de 5 à 15 ans sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="5-15-ans-longs">
-					<div>
-						<h2>
-							Coupe de 5 à 15 ans sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">29.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="tresse">
-					<div>
-						<h2>
-							Tresse
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">22.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">20.00 CHF</p>
-					</div>
-				</div>
-			</div>
-		</div>
+					<div onclick="selectOption(this)" id="5-15-ans-longs">
+						<div>
+							<h2>
+								Coupe de 5 à 15 ans sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-		<hr>
-
-		<div class="femme">
-			<button class="femme derouler" onclick="showMenu(this)">
-				FEMME
-				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
-			</button>
-			<div class="container-derouler">
-				<div onclick="selectOption(this)" id="f-simple-courts">
-					<div>
-						<h2>
-							Coupe simple sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">29.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">33.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="tresse">
+						<div>
+							<h2>
+								Tresse
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="f-simple-longs">
-					<div>
-						<h2>
-							Coupe simple sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">39.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coupe-brushing-courts">
-					<div>
-						<h2>
-							Coupe brushing sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">50 min</p>
-						<p class="meta">53.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coupe-brushing-longs">
-					<div>
-						<h2>
-							Coupe brushing sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 30min</p>
-						<p class="meta">62.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coupe-séchage-courts">
-					<div>
-						<h2>
-							Coupe et séchage simple sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">47.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coupe-séchage-longs">
-					<div>
-						<h2>
-							Coupe et séchage simple sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 15min</p>
-						<p class="meta">55.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-brushing-courts">
-					<div>
-						<h2>
-							Brushing sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">20 min</p>
-						<p class="meta">35.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-brushing-longs">
-					<div>
-						<h2>
-							Brushing sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">45.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-plis-courts">
-					<div>
-						<h2>
-							Mise en plis sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h</p>
-						<p class="meta">40.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-plis-longs">
-					<div>
-						<h2>
-							Mise en plis sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 45min</p>
-						<p class="meta">50.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-séchage-courts">
-					<div>
-						<h2>
-							Séchage simple sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">20 min</p>
-						<p class="meta">28.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-séchage-longs">
-					<div>
-						<h2>
-							Séchage simple sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">40 min</p>
-						<p class="meta">35.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-perm-courts">
-					<div>
-						<h2>
-							Permanente sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h</p>
-						<p class="meta">64.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-perm-longs">
-					<div>
-						<h2>
-							Permanente sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 30min</p>
-						<p class="meta">80.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-perm-part-courts">
-					<div>
-						<h2>
-							Permanente partielle sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">51.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coloration-courts">
-					<div>
-						<h2>
-							Coloration sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h</p>
-						<p class="meta">46.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-coloration-longs">
-					<div>
-						<h2>
-							Coloration sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 30min</p>
-						<p class="meta">54.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-shampoing-colorant-courts">
-					<div>
-						<h2>
-							Shampoing colorant sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">39.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-shampoing-colorant-longs">
-					<div>
-						<h2>
-							Shampoing colorant sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h</p>
-						<p class="meta">49.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-mèches-courts">
-					<div>
-						<h2>
-							Mèches sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">1h 30min</p>
-						<p class="meta">50.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-mèches-longs">
-					<div>
-						<h2>
-							Mèches sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">2h</p>
-						<p class="meta">65.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-décol-courts">
-					<div>
-						<h2>
-							Décoloration sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">2h</p>
-						<p class="meta">120.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-décol-longs">
-					<div>
-						<h2>
-							Décoloration sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">3h</p>
-						<p class="meta">150.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="f-chignon">
-					<div>
-						<h2>
-							Chignon sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">35.00 CHF</p>
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">20.00 CHF</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<hr>
+			<hr>
 
-		<div class="homme">
-			<button class="homme derouler" onclick="showMenu(this)">
-				HOMME
-				<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
-			</button>
-			<div class="container-derouler">
-				<div onclick="selectOption(this)" id="m-shampoing-coupe-séchage-courts">
-					<div>
-						<h2>
-							Shampoing coupe séchage sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+			<div class="femme">
+				<button type="button" formnovalidate class="femme derouler" onclick="showMenu(this)">
+					FEMME
+					<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
+				</button>
+				<div class="container-derouler">
+					<div onclick="selectOption(this)" id="f-simple-courts">
+						<div>
+							<h2>
+								Coupe simple sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">33.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">34.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="f-simple-longs">
+						<div>
+							<h2>
+								Coupe simple sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="m-shampoing-coupe-séchage-longs">
-					<div>
-						<h2>
-							Shampoing coupe séchage sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">45 min</p>
-						<p class="meta">44.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="m-coupe-courts">
-					<div>
-						<h2>
-							Coupe simple sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">39.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">20 min</p>
-						<p class="meta">27.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="f-coupe-brushing-courts">
+						<div>
+							<h2>
+								Coupe brushing sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="m-coupe-longs">
-					<div>
-						<h2>
-							Coupe simple sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">30 min</p>
-						<p class="meta">37.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="m-couronne">
-					<div>
-						<h2>
-							Coupe couronne
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">50 min</p>
+							<p class="meta">53.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">15 min</p>
-						<p class="meta">22.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="f-coupe-brushing-longs">
+						<div>
+							<h2>
+								Coupe brushing sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="m-shampoing-couronne-courts">
-					<div>
-						<h2>
-							Shampoing et coupe couronne sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">25 min</p>
-						<p class="meta">27.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="m-shampoing-séchage-courts">
-					<div>
-						<h2>
-							Shampoing et séchage sur cheveux courts
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">1h 30min</p>
+							<p class="meta">62.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">15 min</p>
-						<p class="meta">18.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="f-coupe-séchage-courts">
+						<div>
+							<h2>
+								Coupe et séchage simple sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="m-shampoing-séchage-longs">
-					<div>
-						<h2>
-							Shampoing et séchage sur cheveux longs
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
-					</div>
-
-					<div class="meta">
-						<p class="meta">20 min</p>
-						<p class="meta">28.00 CHF</p>
-					</div>
-				</div>
-
-				<div onclick="selectOption(this)" id="m-tondeuse">
-					<div>
-						<h2>
-							Coupe tondeuse
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">47.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">15 min</p>
-						<p class="meta">20.00 CHF</p>
-					</div>
-				</div>
+					<div onclick="selectOption(this)" id="f-coupe-séchage-longs">
+						<div>
+							<h2>
+								Coupe et séchage simple sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
 
-				<div onclick="selectOption(this)" id="m-barbe-moustache-oreilles">
-					<div>
-						<h2>
-							Taille de la barbe, de la moustache et des contours d'oreilles
-						</h2>
-						<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						<div class="meta">
+							<p class="meta">1h 15min</p>
+							<p class="meta">55.00 CHF</p>
+						</div>
 					</div>
 
-					<div class="meta">
-						<p class="meta">10 min</p>
-						<p class="meta">15.00 CHF</p>
+					<div onclick="selectOption(this)" id="f-brushing-courts">
+						<div>
+							<h2>
+								Brushing sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">20 min</p>
+							<p class="meta">35.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-brushing-longs">
+						<div>
+							<h2>
+								Brushing sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">45.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-plis-courts">
+						<div>
+							<h2>
+								Mise en plis sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h</p>
+							<p class="meta">40.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-plis-longs">
+						<div>
+							<h2>
+								Mise en plis sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h 45min</p>
+							<p class="meta">50.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-séchage-courts">
+						<div>
+							<h2>
+								Séchage simple sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">20 min</p>
+							<p class="meta">28.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-séchage-longs">
+						<div>
+							<h2>
+								Séchage simple sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">40 min</p>
+							<p class="meta">35.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-perm-courts">
+						<div>
+							<h2>
+								Permanente sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h</p>
+							<p class="meta">64.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-perm-longs">
+						<div>
+							<h2>
+								Permanente sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h 30min</p>
+							<p class="meta">80.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-perm-part-courts">
+						<div>
+							<h2>
+								Permanente partielle sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">51.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-coloration-courts">
+						<div>
+							<h2>
+								Coloration sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h</p>
+							<p class="meta">46.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-coloration-longs">
+						<div>
+							<h2>
+								Coloration sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h 30min</p>
+							<p class="meta">54.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-shampoing-colorant-courts">
+						<div>
+							<h2>
+								Shampoing colorant sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">39.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-shampoing-colorant-longs">
+						<div>
+							<h2>
+								Shampoing colorant sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h</p>
+							<p class="meta">49.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-mèches-courts">
+						<div>
+							<h2>
+								Mèches sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">1h 30min</p>
+							<p class="meta">50.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-mèches-longs">
+						<div>
+							<h2>
+								Mèches sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">2h</p>
+							<p class="meta">65.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-décol-courts">
+						<div>
+							<h2>
+								Décoloration sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">2h</p>
+							<p class="meta">120.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-décol-longs">
+						<div>
+							<h2>
+								Décoloration sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">3h</p>
+							<p class="meta">150.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="f-chignon">
+						<div>
+							<h2>
+								Chignon sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">35.00 CHF</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+
+			<hr>
+
+			<div class="homme">
+				<button type="button" class="homme derouler" onclick="showMenu(this)" formnovalidate>
+					HOMME
+					<img src="assets/images/icons/arrow.png" alt="Derouler le menu">
+				</button>
+				<div class="container-derouler">
+					<div onclick="selectOption(this)" id="m-shampoing-coupe-séchage-courts">
+						<div>
+							<h2>
+								Shampoing coupe séchage sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">34.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-shampoing-coupe-séchage-longs">
+						<div>
+							<h2>
+								Shampoing coupe séchage sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">45 min</p>
+							<p class="meta">44.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-coupe-courts">
+						<div>
+							<h2>
+								Coupe simple sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">20 min</p>
+							<p class="meta">27.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-coupe-longs">
+						<div>
+							<h2>
+								Coupe simple sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">30 min</p>
+							<p class="meta">37.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-couronne">
+						<div>
+							<h2>
+								Coupe couronne
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">15 min</p>
+							<p class="meta">22.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-shampoing-couronne-courts">
+						<div>
+							<h2>
+								Shampoing et coupe couronne sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">25 min</p>
+							<p class="meta">27.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-shampoing-séchage-courts">
+						<div>
+							<h2>
+								Shampoing et séchage sur cheveux courts
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">15 min</p>
+							<p class="meta">18.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-shampoing-séchage-longs">
+						<div>
+							<h2>
+								Shampoing et séchage sur cheveux longs
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">20 min</p>
+							<p class="meta">28.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-tondeuse">
+						<div>
+							<h2>
+								Coupe tondeuse
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">15 min</p>
+							<p class="meta">20.00 CHF</p>
+						</div>
+					</div>
+
+					<div onclick="selectOption(this)" id="m-barbe-moustache-oreilles">
+						<div>
+							<h2>
+								Taille de la barbe, de la moustache et des contours d'oreilles
+							</h2>
+							<img src="assets/images/icons/checkbox-mt.png" alt="Sélectionner l'option">
+						</div>
+
+						<div class="meta">
+							<p class="meta">10 min</p>
+							<p class="meta">15.00 CHF</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
 
 		<hr>
 
@@ -620,8 +625,8 @@
 			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 		<div class="checkout-prompt" hidden>
-			<p>Vous avez terminéf ? Passez à la suite!</p>
-			<a href="./checkout">Suivant</a>
+			<p>Vous avez terminé ? Passez à la suite!</p>
+			<button form="coupe">Suivant</button>
 		</div>
 	</main>
 
