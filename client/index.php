@@ -40,6 +40,7 @@
 			$year = $_POST["annee"];
 			$time = $_POST["temps"];
 			$type = $_POST["type"];
+			$hour = $_POST["hour"];
 			$timeSlices = (int)$time / 30;
 
 			echo '<input type="text" style="display: none;" id="day" name="jour" value="' . $day . '">';
@@ -47,6 +48,7 @@
 			echo '<input type="text" style="display: none;" id="year" name="annee" value="' . $year . '">';
 			echo '<input type="text" style="display: none;" id="type" name="type" value="' . $type . '">';
 			echo '<input type="text" style="display: none;" id="time" name="temps" value="' . $time . '">';
+			echo '<input type="text" style="display: none;" id="heure" name="heure" value="' . $hour . '">';
 			echo '<input type="text" style="display: none;" id="time-slices" name="periodes" value="' . $timeSlices . '">';
 			?>
 			<label for="nom">Nom:</label>

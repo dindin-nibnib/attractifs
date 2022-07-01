@@ -620,9 +620,7 @@
 		<hr>
 
 		<h2>Localisation</h2>
-		<iframe
-			src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d675.8095995036854!2d7.4547345!3d47.3487434!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791dcbf2fc69585%3A0xfd8aadd6d983bfa8!2sCoiffure%20Attrac&#39;tifs!5e0!3m2!1sen!2sch!4v1641407898761!5m2!1sen!2sch"
-			width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d675.8095995036854!2d7.4547345!3d47.3487434!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791dcbf2fc69585%3A0xfd8aadd6d983bfa8!2sCoiffure%20Attrac&#39;tifs!5e0!3m2!1sen!2sch!4v1641407898761!5m2!1sen!2sch" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 		<div class="checkout-prompt" hidden>
 			<p>Vous avez terminé ? Passez à la suite!</p>

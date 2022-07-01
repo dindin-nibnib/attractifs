@@ -82,8 +82,9 @@
 		?>
 
 		<form id="heures" action="../client/index.php" method="post" style="display: none;"><?php
-																							$servername = "127.0.0.1";
-																							$username = "root";
+																							$servername = "g61ai.myd.infomaniak.com";
+																							$username = "g61ai_beucodi";
+																							$password = "Odin2006#SQL";
 
 																							$day = $_POST["jour"];
 																							$month = $_POST["mois"];
@@ -94,7 +95,7 @@
 																							}
 
 																							$conn = new mysqli();
-																							$conn->connect($servername, $username, null, "attractifs", 3306);
+																							$conn->connect($servername, $username, $password, "g61ai_attractifs", 3306);
 
 																							// Check connection
 																							if ($conn->connect_error) {
