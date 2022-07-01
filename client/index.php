@@ -29,10 +29,26 @@
 
 	<main>
 		<h2>Votre commande: </h2>
-		<div><?php
-				echo $_COOKIE[""];
-				?></div>
-		<form action="#">
+		<div id="commande"><?php
+							echo $_POST["type"];
+							?></div>
+		<h2>Coordonnées: </h2>
+		<form action="../confirmation/index.php" method="post">
+			<?php
+			$day = $_POST["jour"];
+			$month = $_POST["mois"];
+			$year = $_POST["annee"];
+			$time = $_POST["temps"];
+			$type = $_POST["type"];
+			$timeSlices = (int)$time / 30;
+
+			echo '<input type="text" style="display: none;" id="day" name="jour" value="' . $day . '">';
+			echo '<input type="text" style="display: none;" id="month" name="mois" value="' . $month . '">';
+			echo '<input type="text" style="display: none;" id="year" name="annee" value="' . $year . '">';
+			echo '<input type="text" style="display: none;" id="type" name="type" value="' . $type . '">';
+			echo '<input type="text" style="display: none;" id="time" name="temps" value="' . $time . '">';
+			echo '<input type="text" style="display: none;" id="time-slices" name="periodes" value="' . $timeSlices . '">';
+			?>
 			<label for="nom">Nom:</label>
 			<input type="text" name="nom" id="nom"><br><br>
 			<label for="prenom">Prenom:</label>
