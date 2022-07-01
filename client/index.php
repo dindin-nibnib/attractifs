@@ -27,6 +27,24 @@
 		</div>
 	</header>
 
+	<main>
+		<h2>Votre commande: </h2>
+		<div><?php
+				echo $_COOKIE[""];
+				?></div>
+		<form action="#">
+			<label for="nom">Nom:</label>
+			<input type="text" name="nom" id="nom"><br><br>
+			<label for="prenom">Prenom:</label>
+			<input type="text" id="prenom" name="prenom"><br><br>
+			<label for="email">E-mail</label>
+			<input type="email" name="email" id="email"><br><br>
+			<label for="telephone">Téléphone:</label>
+			<input type="tel" name="telephone" id="telephone"><br><br>
+
+			<input type="submit" value="Submit">
+		</form>
+	</main>
 
 	<footer>
 		Contact:

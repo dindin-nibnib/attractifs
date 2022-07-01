@@ -38,7 +38,7 @@
 
 		<h2>Faites votre choix:</h2>
 
-		<form action="./checkout" method="post" id="coupe">
+		<form action="./checkout/index.php" method="post" id="coupe">
 			<input type="text" name="type" style="display:none" id="type">
 			<input type="text" name="temps" style="display:none" id="temps">
 			<div class="enfant">

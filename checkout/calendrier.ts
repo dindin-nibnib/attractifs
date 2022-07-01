@@ -413,6 +413,40 @@ function previousMonth() {
 }
 
 window.onload = async () => {
+  let monthInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(2)"
+  );
+
+  if (!monthInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (monthInput.tagName !== "INPUT") {
+    console.error("Not an input");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  monthInput.value = `${getCurrentDate().getMonth() + 1}`;
+
+  let yearInput = document.querySelector(
+    "#jours > input[type=text]:nth-child(3)"
+  );
+
+  if (!yearInput) {
+    console.error("undefined");
+    return;
+  }
+
+  if (yearInput.tagName !== "INPUT") {
+    console.error("Not an input");
+    return;
+  }
+
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  yearInput.value = `${getCurrentDate().getFullYear()}`;
+
   if (
     document.querySelector("#mois > span")?.innerHTML !== "" &&
     document.querySelector("#mois > span")?.innerHTML !== undefined
@@ -447,6 +481,9 @@ window.onload = async () => {
   var heures: Array<string> = (await (await fetch("./heures.json")).json())
     .heures;
 
+  // @ts-ignore: Property 'value' does not exist on type 'Element'.
+  let timeSlices = document.querySelector("#time-slices")?.value;
+
   if (
     heuresElement.innerHTML
       .split(" ")
@@ -457,7 +494,19 @@ window.onload = async () => {
       .join("") === ""
   ) {
     heuresElement.style.display = "";
+
     for (let i = 0; i < heures.length; i++) {
+      var available = true;
+      for (let j = 0; j <= timeSlices; j++) {
+        if (
+          heures[i + j] === "unavailable" ||
+          heures[i + j] === heures[heures.length]
+        )
+          available = false;
+      }
+
+      if (!available) continue;
+
       let button = document.createElement("button");
       button.name = "hour";
       button.value = `${heures[i]}`;
@@ -471,13 +520,45 @@ window.onload = async () => {
       .split("\n")
       .join("")
       .split("\t")
-      .join("") !== " "
+      .join("") !== "none"
   ) {
-    let heuresPrises = heuresElement.innerHTML
+    heuresElement.style.display = "";
+
+    let heuresFormatCourt: Array<string> = [];
+    heuresElement.innerHTML
       .split(" ")
       .join("")
       .split("\t")
       .join("")
-      .split("\n");
+      .split("\n")
+      .forEach((element) => {
+        heuresFormatCourt.push(element.split(":").slice(0, 1).join(":"));
+      });
+
+    heuresFormatCourt.forEach((element) => {
+      heures[heures.indexOf(element)] = "unavailable";
+    });
+
+    for (let i = 0; i < heures.length; i++) {
+      var available = true;
+
+      for (let j = 0; j <= timeSlices; j++) {
+        if (
+          heures[i + j] === "unavailable" ||
+          heures[i + j] === heures[heures.length]
+        )
+          available = false;
+      }
+
+      if (!available) continue;
+
+      if (heures[i] !== "unavailable") {
+        let button = document.createElement("button");
+        button.name = "hour";
+        button.value = `${heures[i]}`;
+        button.innerHTML = `${heures[i]}`;
+        heuresElement.appendChild(button);
+      }
+    }
   }
 };

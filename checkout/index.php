@@ -15,7 +15,6 @@
 
 	<link rel="stylesheet" href="https://unpkg.com/@csstools/normalize.css">
 	<link rel="stylesheet" href="./css/main.css">
-	<script src="https://raw.githubusercontent.com/mysqljs/mysql/master/index.js" type="text/js"></script>
 	<script src="./calendrier.js"></script>
 </head>
 
@@ -55,7 +54,13 @@
 				</div>
 				<input type="text" style="display: none;" form="jours-numeros" name="mois">
 				<input type="text" style="display: none;" form="jours-numeros" name="annee">
-				<form id="jours-numeros" action="index.php" method="post">
+				<?php
+				$time = $_POST["temps"];
+				$type = $_POST["type"];
+				echo '<input type="text" style="display: none;" form="jours-numeros" id="type" name="type" value="' . $type . '">';
+				echo '<input type="text" style="display: none;" form="jours-numeros" id="time" name="temps" value="' . $time . '">';
+				?>
+				<form id="jours-numeros" action="./index.php" method="post">
 				</form>
 			</div>
 		</div>
@@ -64,10 +69,16 @@
 		$day = $_POST["jour"];
 		$month = $_POST["mois"];
 		$year = $_POST["annee"];
+		$time = $_POST["temps"];
+		$type = $_POST["type"];
+		$timeSlices = (int)$time / 30;
 
-		echo '<input type="text" style="display: none;" form="heures" name="jour" value="' . $day . '">';
-		echo '<input type="text" style="display: none;" form="heures" name="mois" value="' . $month . '">';
-		echo '<input type="text" style="display: none;" form="heures" name="annee" value="' . $year . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="day" name="jour" value="' . $day . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="month" name="mois" value="' . $month . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="year" name="annee" value="' . $year . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="type" name="type" value="' . $type . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="time" name="temps" value="' . $time . '">';
+		echo '<input type="text" style="display: none;" form="heures" id="time-slices" name="periodes" value="' . $timeSlices . '">';
 		?>
 
 		<form id="heures" action="../client/index.php" method="post" style="display: none;"><?php
@@ -79,7 +90,7 @@
 																							$year = $_POST["annee"];
 
 																							if ($day == "" && $month == "" && $year == "") {
-																								echo " ";
+																								echo "none";
 																							}
 
 																							$conn = new mysqli();
@@ -98,7 +109,7 @@
 																							}
 
 																							$conn->close();
-																							?></from>
+																							?></form>
 
 	</main>
 
