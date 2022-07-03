@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "The nautigal";
-	src: url("../assets/fonts/TheNautigal-Regular.ttf");
+	src: url("../../assets/fonts/TheNautigal-Regular.ttf");
 }
 
 * {
@@ -48,7 +48,7 @@ hr {
 }
 
 html {
-	background-image: url(../assets/images/fond.png);
+	background-image: url(../../assets/images/fond.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
@@ -112,27 +112,9 @@ header > a {
 	width: 80%;
 }
 
-img[src="assets/images/icones/arrow.png"] {
+img[src="../../assets/images/icones/arrow.png"] {
 	width: 36px;
 	transition: all 300ms;
-}
-
-button:not([form="coupe"]) {
-	background: none;
-	border: none;
-	font-size: 36px;
-	cursor: pointer;
-	margin: 10px 0;
-	width: 100%;
-	text-align: left;
-}
-
-button:hover {
-	color: var(--color-accent);
-}
-
-button > img {
-	width: 36px;
 }
 
 div.container-derouler {
@@ -201,20 +183,19 @@ div.container-derouler > div > div.meta {
 	font-size: 20px;
 }
 
-.checkout-prompt > button {
+.checkout-prompt > a {
 	background-color: var(--color-accent);
 	border-radius: inherit;
 	border-color: var(--color-accent);
 	border-width: inherit;
 	border-style: inherit;
-	color: white;
 	padding: 7px 10px;
 	margin: 5px;
 	font-size: 18px;
 	text-decoration: none;
 }
 
-.checkout-prompt > button:hover {
+.checkout-prompt > a:hover {
 	box-shadow: 0 0 20px black;
 }
 
@@ -231,7 +212,7 @@ div.container-derouler > div > div.meta {
 	text-align: center;
 }
 
-img[src="assets/images/icons/checkbox-mt.png"], img[src="assets/images/icons/checkbox-full.png"] {
+img[src="../../assets/images/icons/checkbox-mt.png"], img[src="../../assets/images/icons/checkbox-full.png"] {
 	width: 30px;
 	height: 30px;
 	margin: 5px;
@@ -262,4 +243,99 @@ noscript > img {
 	aspect-ratio: 1 / 1;
 	width: 30vw;
 	align-self: center;
+}
+
+#calendrier {
+	width: 75%;
+	border-radius: 10px;
+	border: 2px solid var(--color-accent);
+	padding: 10px;
+	background-color: var(--color-back);
+	margin-bottom: 20px;
+}
+
+#heures {
+	width: 75%;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	border-radius: 10px;
+	border: 2px solid var(--color-accent);
+	padding: 10px;
+	background-color: var(--color-back);
+	margin-bottom: 20px;
+	row-gap: 20px;
+	column-gap: 10px;
+}
+
+#heures > button {
+	width: 75%;
+	border-radius: 20px;
+	border: 2px solid var(--color-back);
+	background-color: var(--color-accent);
+	color: white;
+	cursor: pointer;
+	padding: 5px;
+	font-size: 20px;
+}
+
+#mois {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	border-bottom: 1px solid #101112;
+	margin:5px;
+	padding:5px;
+}
+
+#jours-labels {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	margin-bottom: 10px;
+}
+
+#jours-labels > span {
+	text-align: center;
+	width: 100%;
+}
+
+#jours-numeros {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	row-gap: 5px;
+}
+
+form#jours-numeros > button, span {
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 25px;
+	display: inline;
+	height: fit-content;
+}
+
+form#jours-numeros > button {
+	background-color: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+#jours-numeros span.not-this-month {
+	color:#3f4144
+}
+
+#jours-numeros span.unavailable {
+	text-decoration:line-through;
+}
+
+#mois-avant {
+	transform: rotate(-90deg);
+}
+
+#mois-arriere {
+	transform: rotate(90deg);
+}
+
+#heures {
+	display: grid;
 }

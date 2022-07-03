@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "The nautigal";
-	src: url("../assets/fonts/TheNautigal-Regular.ttf");
+	src: url("../../assets/fonts/TheNautigal-Regular.ttf");
 }
 
 * {
@@ -48,7 +48,7 @@ hr {
 }
 
 html {
-	background-image: url(../assets/images/fond.png);
+	background-image: url(../../assets/images/fond.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
