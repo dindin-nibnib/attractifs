@@ -456,14 +456,18 @@ window.onload = async () => {
             .join("")
             .split("\n")
             .forEach((element) => {
-            heuresFormatCourt.push(element.split(":").slice(0, 1).join(":"));
+            console.log(element, "not available.");
+            heuresFormatCourt.push(element.split(":").slice(0, 2).join(":"));
         });
+        console.log(heuresFormatCourt);
         heuresFormatCourt.forEach((element) => {
             heures[heures.indexOf(element)] = "unavailable";
         });
+        console.log(heures);
+        heuresElement.innerHTML = "";
         for (let i = 0; i < heures.length; i++) {
             var available = true;
-            for (let j = 0; j <= timeSlices; j++) {
+            for (let j = 0; j <= timeSlices - 1; j++) {
                 if (heures[i + j] === "unavailable" ||
                     heures[i + j] === heures[heures.length])
                     available = false;

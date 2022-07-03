@@ -27,11 +27,11 @@
 
 	<main>
 		<?php
-		ini_set('display_errors',1);
+		ini_set('display_errors', 1);
 		error_reporting(E_ALL);
-		
+
 		mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-		
+
 		function prepared_query($mysqli, $sql, $params, $types = "")
 		{
 			$types = $types ?: str_repeat("s", count($params));
@@ -40,7 +40,7 @@
 			$stmt->execute();
 			return $stmt;
 		}
-		
+
 		$servername = "g61ai.myd.infomaniak.com";
 		$username = "g61ai_beucodi";
 		$password = "Odin2006#SQL";
@@ -63,6 +63,31 @@
 		// Check connection
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
+		}
+
+		$cuts = [];
+		$cutExploded = explode("; ", $cut);
+		array_pop($cutExploded);
+		foreach ($cutExploded as $cutIdentifier) {
+			$sql = "SELECT id FROM coupe WHERE identifiant LIKE ?";
+			$stmt = prepared_query($conn, $sql, [$cutIdentifier]);
+			$result = $stmt->get_result()->fetch_assoc()["id"];
+			array_push($cuts, $result);
+		};
+
+		$sql = "SELECT count(id) FROM horaire WHERE date = ? AND heure = ?";
+		$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00"]);
+		$result = $stmt->get_result();
+		if ($result->fetch_assoc()["count(id)"] > 0) {
+			$sql = "SELECT id FROM horaire WHERE date = ? AND heure = ?";
+			$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00"]);
+			$result = $stmt->get_result()->fetch_assoc()["id"];
+			$sql = "SELECT count(rdv.id) from rendezvous rdv WHERE fk_horaire = ?";
+			$stmt = prepared_query($conn, $sql, [$result]);
+			if ($stmt->get_result()->fetch_assoc()["count(rdv.id)"] > 0) {
+				header('Location: ../index.php');
+				die();
+			}
 		}
 
 		$sql = "SELECT id FROM client WHERE nom = ? AND prenom = ? AND (mail = ? OR telephone = ?);";
@@ -90,24 +115,34 @@
 			$client_id = $result["id"];
 		}
 
-		$sql = "INSERT INTO rendezvous (coiffure, fk_client) VALUES (?, ?);";
-		$stmt = prepared_query($conn, $sql, [$cut, $client_id]);
-
-		$sql = "SELECT id FROM rendezvous WHERE coiffure = ? AND fk_client = ?;";
-		$stmt = prepared_query($conn, $sql, [$cut, $client_id]);
-		$rdv_id = $stmt->get_result()->fetch_assoc()["id"];
-
-		$sql = "SELECT id FROM horaire WHERE date = ? AND heure = ?;";
+		$sql = "SELECT count(id) FROM horaire WHERE date = ? AND heure = ?;";
 		$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00"]);
-		$result = $stmt->get_result()->fetch_assoc();
+		$result = $stmt->get_result()->fetch_assoc()["count(id)"];
+		$horaireId = 0;
 
-		if (count($result) == 0) {
-			$sql = "INSERT INTO horaire (date, heure, fk_rdv) VALUES (?, ?, ?);";
-			$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00", $rdv_id]);
+		if ($result == 0) {
+			$sql = "INSERT INTO horaire (date, heure) VALUES (?, ?);";
+			$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00"]);
+
+			$sql = "SELECT id FROM horaire WHERE date = ? AND heure = ?;";
+			$stmt = prepared_query($conn, $sql, [$year . "-" . $month . "-" . $day, $hour . ":00"]);
+			$horaireId = $stmt->get_result()->fetch_assoc()["id"];
 		} else {
-			$sql = "UPDATE horaire SET fk_rdv = ? WHERE horaire.id = ?;";
-			$stmt = prepared_query($conn, $sql, [$rdv_id, $result["id"]]);
+			$horaireId = $result["id"];
 		}
+
+		$sql = "INSERT INTO rendezvous (fk_client, fk_horaire) VALUES (?, ?);";
+		$stmt = prepared_query($conn, $sql, [$client_id, $horaireId]);
+
+		$sql = "SELECT id FROM rendezvous WHERE fk_client = ? AND fk_horaire = ?;";
+		$stmt = prepared_query($conn, $sql, [$client_id, $horaireId]);
+		$rdvId = $stmt->get_result()->fetch_assoc()["id"];
+
+		foreach ($cuts as $cut) {
+			$sql = "INSERT INTO effectuer VALUES (?, ?)";
+			$stmt = prepared_query($conn, $sql, [$cut, $rdvId]);
+		}
+
 		$conn->close();
 		print "<h2>Merci de votre visite!</h2> <span>Vous allez bientôt reçevoir un e-mail de confirmation.<span>";
 		mail($email, "Reservation Coiffure attrac'tifs", "Bonjour.\nNous avons bien reçu votre demande de rendez-vous au salon de coiffure attractifs, le " . $day . "." . $month . "." . $year . ".\nNous nous réjouissons de vous retrouver!\n\nCeci est un message automatique. Il est inutile d'y répondre.", "From: Coiffure attractifs <odinbeuchat.ob@ikmail.com>");

@@ -110,3 +110,58 @@ function getCookie(cname) {
   }
   return "";
 }
+
+window.onload = async () => {
+  let processDataCuts = function (divCuts) {
+    var coupes = new Array();
+    divCuts.innerHTML.split("<br><br>").forEach(coupe => {
+      coupeMap = new Map();
+      coupe.split("<br>").forEach(value => {
+        coupeMap.set(value.split(": ")[0], value.split(": ")[1])
+      })
+      coupes.push(coupeMap)
+    })
+    coupes.pop();
+
+    divCuts.innerHTML = "";
+
+    coupes.forEach(coupe => {
+      let div = document.createElement("div");
+      div.setAttribute("onclick", "selectOption(this)");
+      div.setAttribute("id", coupe.get("id"))
+
+      let divTitle = document.createElement("div");
+      let h2 = document.createElement("h2");
+      h2.innerHTML = coupe.get("name");
+      divTitle.appendChild(h2);
+      let checkbox = document.createElement("img");
+      checkbox.setAttribute("src", "assets/images/icons/checkbox-mt.png");;
+      checkbox.setAttribute("alt", "Sélectionner l'option");
+      divTitle.appendChild(checkbox);
+      div.appendChild(divTitle);
+
+      let divMeta = document.createElement("div");
+      divMeta.classList.add("meta");
+      let duration = document.createElement("p");
+      duration.classList.add("meta");
+      let hours = Math.floor(Number(coupe.get("duration") / 60))
+      let mins = Number(coupe.get("duration")) % 60;
+      if (hours != 0)
+        duration.innerHTML = `${hours} h ${mins} min`;
+      else
+        duration.innerHTML = `${mins} min`;
+      divMeta.appendChild(duration);
+      let price = document.createElement("p");
+      price.classList.add("meta");
+      price.innerHTML = `${coupe.get("price")} CHF`;
+      divMeta.appendChild(price);
+      div.appendChild(divMeta);
+
+      divCuts.appendChild(div);
+    })
+  }
+
+  processDataCuts(document.querySelector("#coupe > div.enfant > div"));
+  processDataCuts(document.querySelector("#coupe > div.femme > div"));
+  processDataCuts(document.querySelector("#coupe > div.homme > div"));
+}

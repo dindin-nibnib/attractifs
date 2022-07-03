@@ -102,7 +102,7 @@
 																								die("Connection failed: " . $conn->connect_error);
 																							}
 
-																							$sql = "SELECT heure FROM horaire where date = '$year-$month-$day' and fk_rdv is not null;";
+																							$sql = "SELECT h.heure FROM horaire h inner join rendezvous rdv on (fk_horaire = h.id) where date = '$year-$month-$day' and rdv.id is not null;";
 																							$result = $conn->query($sql);
 
 																							while ($row = $result->fetch_assoc()) {
